@@ -1,9 +1,13 @@
-declare namespace NodeJS {
-  interface ProcessEnv {
-    API_KEY: string;
-    [key: string]: string | undefined;
-  }
+interface ProcessEnv {
+  readonly API_KEY: string;
+  readonly [key: string]: string | undefined;
 }
 
-// Garante que o ficheiro seja tratado como um módulo global
+interface Process {
+  readonly env: ProcessEnv;
+}
+
+declare var process: Process;
+
+// Garante que o ficheiro seja tratado como um módulo
 export {};
